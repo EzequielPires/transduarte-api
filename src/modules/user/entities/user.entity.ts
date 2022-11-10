@@ -1,5 +1,4 @@
 import { hashSync } from "bcrypt";
-import { Service } from "src/modules/service/entities/service.entity";
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToMany, BeforeInsert } from "typeorm";
 
 @Entity()
@@ -16,7 +15,7 @@ export class User {
     @Column()
     password: string;
     
-    @Column()
+    @Column({nullable: true})
     avatar: string;
     
     @Column()
@@ -24,9 +23,6 @@ export class User {
 
     @CreateDateColumn()
     create_at: Date;
-
-    @ManyToMany(() => Service, service => service.providers)
-    services: Service[];
 
     @BeforeInsert()
     hashPassword() {

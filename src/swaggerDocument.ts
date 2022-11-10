@@ -1,8 +1,9 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 export const swaggerDocument = new DocumentBuilder()
-    .setTitle("Scheduling System")
-    .setDescription('The scheduling system API description')
+    .setTitle("Transduarte System")
+    .setDescription('The tranduarte system API description')
     .setVersion('1.0')
     .addTag('user')
+    .addTag('transparency')
     .build();
