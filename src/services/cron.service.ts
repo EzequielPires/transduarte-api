@@ -7,10 +7,10 @@ export class TasksService {
     constructor(private readonly api: HttpService) { }
 
 
-    @Cron(CronExpression.EVERY_10_SECONDS)
+    @Cron(CronExpression.EVERY_10_MINUTES)
     async handleCron() {
         try {
-            this.api.get(__dirname).subscribe();
+            this.api.get(`https://transduarte.herokuapp.com/`).subscribe();
         } catch (error) {
             console.log(error.message);
         }
