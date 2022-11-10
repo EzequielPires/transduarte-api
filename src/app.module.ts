@@ -5,6 +5,9 @@ import { AuthModule } from './auth/auth.module';
 import { TransparencyModule } from './modules/transparency/transparency.module';
 import { join } from 'path';
 import {ServeStaticModule} from '@nestjs/serve-static';
+import { AppController } from './app.controller';
+import { ScheduleModule } from '@nestjs/schedule';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -22,8 +25,10 @@ import {ServeStaticModule} from '@nestjs/serve-static';
     synchronize: true,
   }),
     UserModule, AuthModule, TransparencyModule,
+    ScheduleModule.forRoot(),
+    HttpModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 
