@@ -109,7 +109,24 @@ export class TransparencyService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} transparency`;
+  async remove(id: string) {
+    try {
+      const transparency = await this.transparencyRepository.findOneBy({id});
+
+      if(!transparency) throw new Error('Transparency not already exists');
+
+      await this.transparencyRepository.delete(id);
+
+      return {
+        success: true,
+        transparency: 'Transparency removed success'
+      }
+
+    } catch (error) {
+      return {
+        success: false,
+        message: error.message
+      }
+    }
   }
 }

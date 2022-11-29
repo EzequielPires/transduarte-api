@@ -41,7 +41,7 @@ export class TransparencyController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.transparencyService.remove(+id);
+    return this.transparencyService.remove(id);
   }
 
   @UseInterceptors(FileInterceptor("file", {
